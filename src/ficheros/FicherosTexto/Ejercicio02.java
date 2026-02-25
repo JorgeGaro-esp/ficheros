@@ -2,11 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package ficheros.FicherosDeAccesoSecuencial;
+package ficheros.FicherosTexto;
 
-import static ficheros.FicherosDeAccesoSecuencial.Ejercicio04.in;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -16,7 +14,7 @@ import java.nio.file.Path;
  *
  * @author Jorge Garcia Rodriguez
  */
-public class Ejercicio05 {
+public class Ejercicio02 {
 
     /**
      * @param args the command line arguments
@@ -24,17 +22,15 @@ public class Ejercicio05 {
     public static void main(String[] args) {
         // TODO code application logic here 
 
-        Path rutaL = Path.of("recursos\\Archivo.txt");
-        Path rutaE = Path.of("recursos\\Ejercicio05.txt");
+        Path ruta = Path.of("recursos\\Archivo.txt");
 
-        try (BufferedReader br = Files.newBufferedReader(rutaL); BufferedWriter bw = Files.newBufferedWriter(rutaE)) {
+        try (BufferedReader br = Files.newBufferedReader(ruta)) {
 
-            String lineaL;
+            String linea;
+            while ((linea = br.readLine()) != null) {
 
-            while ((lineaL = br.readLine()) != null) {
-                bw.write(lineaL);
-                bw.newLine();
-
+                System.out.println(linea.toLowerCase().replace('a', '1').replace('e', '2')
+                        .replace('i', '3').replace('o', '4').replace('u', '5'));
             }
         } catch (NoSuchFileException e) {
             System.out.println("Fichero no encontrado");
